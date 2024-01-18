@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Alchemy Of Creatures</string>
+    <string name="rule">
+        Rules
+    </string>
+    <string name="rule_text">Combine two magical creatures to get a new species. The creatures are divided into dark and light. Get all kinds of creatures and unlock new journal entries about the history of the sorcerer. As you get closer to your goal, you will get bonuses and achivas. Good luck on this challenging but exciting path!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

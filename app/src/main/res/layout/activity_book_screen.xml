@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.BookScreenActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_main" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="24dp"
+            android:background="@drawable/bg_main_book"
+            android:layout_weight="6.4">
+
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/myViewPager2"
+                android:layout_margin="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="-8dp"
+            android:layout_weight="1.6">
+
+            <ImageView
+                android:id="@+id/reach_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:src="@drawable/ic_reach" />
+
+            <ImageView
+                android:id="@+id/creatures_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/reach_btn"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_creatures" />
+
+            <ImageView
+                android:id="@+id/diary_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/creatures_btn"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_diary" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
