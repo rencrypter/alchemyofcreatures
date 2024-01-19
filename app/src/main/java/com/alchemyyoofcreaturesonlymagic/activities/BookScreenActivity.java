@@ -2,6 +2,7 @@ package com.alchemyyoofcreaturesonlymagic.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -10,12 +11,15 @@ import android.view.WindowManager;
 import com.alchemyyoofcreaturesonlymagic.DepthPageTransformer;
 import com.alchemyyoofcreaturesonlymagic.adapters.MyPagerAdapter;
 import com.alchemyyoofcreaturesonlymagic.databinding.ActivityBookScreenBinding;
+import com.alchemyyoofcreaturesonlymagic.services.BgMusicService;
 
 
 public class BookScreenActivity extends AppCompatActivity {
 
     ActivityBookScreenBinding binding;
     MyPagerAdapter pagerAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

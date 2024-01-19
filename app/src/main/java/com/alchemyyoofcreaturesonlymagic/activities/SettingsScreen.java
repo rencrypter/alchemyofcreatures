@@ -2,6 +2,7 @@ package com.alchemyyoofcreaturesonlymagic.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +20,8 @@ import com.google.android.material.snackbar.Snackbar;
 public class SettingsScreen extends AppCompatActivity {
 
     ActivitySettingsScreenBinding binding;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +44,7 @@ public class SettingsScreen extends AppCompatActivity {
         binding.onSoundBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isMyServiceRunning(BgMusicService.class)) {
+                if (isMyServiceRunning(BgMusicService.class, SettingsScreen.this)) {
                     Snackbar.make(view,"Sound is already on", 1000).show();
                 } else {
                     Intent serviceIntent = new Intent(SettingsScreen.this, BgMusicService.class);
@@ -54,7 +57,7 @@ public class SettingsScreen extends AppCompatActivity {
         binding.offSoundBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isMyServiceRunning(BgMusicService.class)) {
+                if (isMyServiceRunning(BgMusicService.class, SettingsScreen.this)) {
                     stopService(new Intent(SettingsScreen.this, BgMusicService.class));
                     Snackbar.make(view,"Sound is off now", 1000).show();
                 } else {
@@ -64,8 +67,8 @@ public class SettingsScreen extends AppCompatActivity {
         });
     }
 
-    private boolean isMyServiceRunning(Class<?> serviceClass) {
-        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+    public static boolean isMyServiceRunning(Class<?> serviceClass, Activity a) {
+        ActivityManager manager = (ActivityManager) a.getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
             if (serviceClass.getName().equals(service.service.getClassName())) {
                 return true;
