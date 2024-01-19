@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.alchemyyoofcreaturesonlymagic.R;
+import com.alchemyyoofcreaturesonlymagic.Ref;
 import com.alchemyyoofcreaturesonlymagic.databinding.ActivityRulesScreenBinding;
 import com.alchemyyoofcreaturesonlymagic.services.BgMusicService;
 
@@ -19,6 +20,8 @@ public class RulesScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //
+        loadLanguage();
         //
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -33,5 +36,14 @@ public class RulesScreen extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void loadLanguage() {
+
+        if (Ref.langR) {
+            SettingsScreen.changeLanguageApp("ru", RulesScreen.this);
+        } else {
+            SettingsScreen.changeLanguageApp("en", RulesScreen.this);
+        }
     }
 }

@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.alchemyyoofcreaturesonlymagic.R;
+import com.alchemyyoofcreaturesonlymagic.Ref;
 import com.alchemyyoofcreaturesonlymagic.databinding.FragmentCreaturesBinding;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -51,7 +52,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         super.onCreate(savedInstanceState);
     }
 
@@ -59,7 +60,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentCreaturesBinding.inflate(getLayoutInflater());
+        binding = FragmentCreaturesBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -78,9 +79,40 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
             public void onClick(View view) {
                 binding.newCreature.setImageDrawable(null);
                 binding.resultLayout.setVisibility(View.GONE);
+                //
+                //achievements onLock//
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        achievementsUnlock();
+                    }
+                }, 1000);
+
             }
         });
 
+        binding.achievementImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.achievementLayout.setVisibility(View.GONE);
+            }
+        });
+
+    }
+
+    private void achievementsUnlock() {
+        if (Ref.countOfUnlockCreatures == 1) {
+            binding.achievementLayout.setVisibility(View.VISIBLE);
+            binding.achievementImg.setImageResource(R.drawable.achievement1);
+        }
+        if (Ref.countOfUnlockCreatures == 10) {
+            binding.achievementLayout.setVisibility(View.VISIBLE);
+            binding.achievementImg.setImageResource(R.drawable.achievement2);
+        }
+        if (Ref.countOfUnlockCreatures == 20) {
+            binding.achievementLayout.setVisibility(View.VISIBLE);
+            binding.achievementImg.setImageResource(R.drawable.achievement5);
+        }
     }
 
     @Override
@@ -170,44 +202,66 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
         int secondCreature = clickedCreatures.get(1);
 
         if (firstCreature == 1 && secondCreature == 2) {
-            binding.resultLayout.setVisibility(View.VISIBLE);
-            binding.newCreature.setVisibility(View.VISIBLE);
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    binding.newCreature.setImageResource(R.drawable.creature_merge_by_12);
-                }
-            }, 2000);
+            //if it trues then it already unlocked
+            if (Ref.creature12) {
+                Snackbar.make(binding.newCreature, "Creature already unlocked!", 1000).show();
+            } else {
+                binding.resultLayout.setVisibility(View.VISIBLE);
+                binding.newCreature.setVisibility(View.VISIBLE);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        binding.newCreature.setImageResource(R.drawable.creature_merge_by_12);
+                        Snackbar.make(binding.newCreature, "New creature unlocked!", 1000).show();
+                        Ref.creature12 = true;
+                        Ref.countOfUnlockCreatures++;
+                    }
+                }, 2000);
+            }
 
         } else if (firstCreature == 1 && secondCreature == 3) {
 
         } else if (firstCreature == 1 & secondCreature == 4) {
-            binding.resultLayout.setVisibility(View.VISIBLE);
-            binding.newCreature.setVisibility(View.VISIBLE);
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
 
-                    binding.newCreature.setImageResource(R.drawable.creature_merge_by_14);
+            if (Ref.creature14) {
+                Snackbar.make(binding.newCreature, "Creature already unlocked!", 1000).show();
+            } else {
+                binding.resultLayout.setVisibility(View.VISIBLE);
+                binding.newCreature.setVisibility(View.VISIBLE);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
-                }
-            }, 2000);
+                        binding.newCreature.setImageResource(R.drawable.creature_merge_by_14);
+                        Snackbar.make(binding.newCreature, "New creature unlocked!", 1000).show();
+                        Ref.creature14 = true;
+                        Ref.countOfUnlockCreatures++;
+                    }
+                }, 2000);
+            }
         } else if (firstCreature == 2 & secondCreature == 1) {
 
         } else if (firstCreature == 2 & secondCreature == 2) {
 
         } else if (firstCreature == 2 & secondCreature == 3) {
+            if (Ref.creature23) {
 
-            binding.resultLayout.setVisibility(View.VISIBLE);
-            binding.newCreature.setVisibility(View.VISIBLE);
+            } else {
+                binding.resultLayout.setVisibility(View.VISIBLE);
+                binding.newCreature.setVisibility(View.VISIBLE);
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    binding.newCreature.setImageResource(R.drawable.creature_merge_by_23);
-                }
-            }, 2000);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        binding.newCreature.setImageResource(R.drawable.creature_merge_by_23);
+                        Snackbar.make(binding.newCreature, "New creature unlocked!", 1000).show();
+                        Ref.creature23 = true;
+                        Ref.countOfUnlockCreatures++;
+                    }
+                }, 2000);
+            }
 
         } else if (firstCreature == 2 & secondCreature == 4) {
 

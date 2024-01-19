@@ -8,4 +8,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dear_diary1">Dear Diary,\n\nToday I have decided to begin a great and dangerous task - I am going to restore the magical beings that have almost disappeared from our world. As a sorcerer\'s apprentice, I have always dreamed of restoring the magical order that was once our reality. But every year, more and more magical beings disappear due to wars and conflicts in human territory.\n\nThese creatures once helped us maintain the magical order, but now that order is broken and the magic is disappearing along with these wonderful creatures. I have decided that this cannot continue, and I must do something to save our world from the complete disappearance of magic.\n\nMy first goal is to restore the dragons. Dragons were once a symbol of power and wisdom, but now there are almost none left. I will begin research that will help me restore their population. It will be dangerous, but I\'m sure it\'s possible.\n</string>
     <string name="dear_diary2"><![CDATA[Likewise, I\'m going to work on restoring other magical creatures - phoenixes, griffins, elementals, and many others. I know it will be difficult, but I can\'t afford to just sit back and watch our world lose magic.\n\nI am willing to risk my life to bring magic and harmony back to our world. And I\'ll keep you posted on the whole process, dear diary. Perhaps someday this story will become the legend of how one sorcerer\'s apprentice changed the world. \n]]></string>
+    <string name="en">En</string>
+    <string name="ru">Ru</string>
+    <string name="on">On</string>
+    <string name="off">off</string>
+    <string name="play">Play</string>
+    <string name="rules">Rules</string>
+    <string name="settings">Settings</string>
 </resources>

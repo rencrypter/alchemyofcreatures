@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.alchemyyoofcreaturesonlymagic.DepthPageTransformer;
+import com.alchemyyoofcreaturesonlymagic.Ref;
 import com.alchemyyoofcreaturesonlymagic.adapters.MyPagerAdapter;
 import com.alchemyyoofcreaturesonlymagic.databinding.ActivityBookScreenBinding;
 import com.alchemyyoofcreaturesonlymagic.services.BgMusicService;
@@ -20,7 +22,6 @@ public class BookScreenActivity extends AppCompatActivity {
     MyPagerAdapter pagerAdapter;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +29,12 @@ public class BookScreenActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //
+        loadLanguage();
+
         binding = ActivityBookScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
         //
         // Get ViewPager and Set Adapter
         pagerAdapter = new MyPagerAdapter(this);
@@ -58,6 +63,15 @@ public class BookScreenActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void loadLanguage() {
+
+        if (Ref.langR) {
+            SettingsScreen.changeLanguageApp("ru", BookScreenActivity.this);
+        } else {
+            SettingsScreen.changeLanguageApp("en", BookScreenActivity.this);
+        }
     }
 
 

@@ -1,11 +1,14 @@
 package com.alchemyyoofcreaturesonlymagic.activities;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -13,14 +16,16 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.alchemyyoofcreaturesonlymagic.R;
+import com.alchemyyoofcreaturesonlymagic.Ref;
 import com.alchemyyoofcreaturesonlymagic.databinding.ActivitySettingsScreenBinding;
 import com.alchemyyoofcreaturesonlymagic.services.BgMusicService;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Locale;
+
 public class SettingsScreen extends AppCompatActivity {
 
     ActivitySettingsScreenBinding binding;
-
 
 
     @Override
@@ -33,6 +38,15 @@ public class SettingsScreen extends AppCompatActivity {
         binding = ActivitySettingsScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         //
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // Back is pressed... Finishing the activity
+                startActivity(new Intent(SettingsScreen.this, MainScreen.class));
+                finish();
+
+            }
+        });
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,15 +55,39 @@ public class SettingsScreen extends AppCompatActivity {
         });
 
         //
+        binding.engLangBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Ref.langR = false;
+                changeLanguageApp("en", SettingsScreen.this);
+                finish();
+                startActivity(getIntent());
+            }
+        });
+        binding.russiaLangBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Ref.langR = true;
+                changeLanguageApp("ru", SettingsScreen.this);
+                finish();
+                startActivity(getIntent());
+            }
+        });
+        //
         binding.onSoundBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isMyServiceRunning(BgMusicService.class, SettingsScreen.this)) {
-                    Snackbar.make(view,"Sound is already on", 1000).show();
+                    Snackbar.make(view, "Sound is already on", 1000).show();
                 } else {
-                    Intent serviceIntent = new Intent(SettingsScreen.this, BgMusicService.class);
-                    startService(serviceIntent);
-                    Snackbar.make(view,"Sound is on now", 1000).show();
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                        Intent i = new Intent(SettingsScreen.this, BgMusicService.class);
+//                        startForegroundService(i);
+//                    } else {
+                    Intent i = new Intent(SettingsScreen.this, BgMusicService.class);
+                    startService(i);
+//                    }
+                    Snackbar.make(view, "Sound is on now", 1000).show();
                 }
             }
         });
@@ -59,12 +97,19 @@ public class SettingsScreen extends AppCompatActivity {
             public void onClick(View view) {
                 if (isMyServiceRunning(BgMusicService.class, SettingsScreen.this)) {
                     stopService(new Intent(SettingsScreen.this, BgMusicService.class));
-                    Snackbar.make(view,"Sound is off now", 1000).show();
+                    Snackbar.make(view, "Sound is off now", 1000).show();
                 } else {
-                    Snackbar.make(view,"Sound is already off", 1000).show();
+                    Snackbar.make(view, "Sound is already off", 1000).show();
                 }
             }
         });
+    }
+
+    public static void changeLanguageApp(String lan, Activity a) {
+        Locale locale = new Locale(lan);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        a.getResources().updateConfiguration(config, a.getResources().getDisplayMetrics());
     }
 
     public static boolean isMyServiceRunning(Class<?> serviceClass, Activity a) {
