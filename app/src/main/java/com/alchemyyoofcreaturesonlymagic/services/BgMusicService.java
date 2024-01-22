@@ -60,7 +60,12 @@ public class BgMusicService extends Service implements AudioManager.OnAudioFocus
         }
         return START_STICKY;
     }
-
+//    public void onStop() {
+//
+//    }
+//    public void onPause() {
+//
+//    }
     @Override
     public void onDestroy() {
         super.onDestroy();
