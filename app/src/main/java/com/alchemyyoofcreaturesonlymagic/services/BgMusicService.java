@@ -3,17 +3,21 @@ package com.alchemyyoofcreaturesonlymagic.services;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioAttributes;
+import android.media.AudioFocusRequest;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
 import com.alchemyyoofcreaturesonlymagic.R;
 
-public class BgMusicService extends Service implements AudioManager.OnAudioFocusChangeListener{
-    public  MediaPlayer mediaPlayer;
-    AudioManager audioManager;
+public class BgMusicService extends Service implements AudioManager.OnAudioFocusChangeListener {
+    public static MediaPlayer mediaPlayer;
+    private AudioManager audioManager;
+    private AudioFocusRequest focusRequest;
 
     @Override
     public void onCreate() {
@@ -22,20 +26,37 @@ public class BgMusicService extends Service implements AudioManager.OnAudioFocus
         mediaPlayer = MediaPlayer.create(this, R.raw.vopna_bg);
         mediaPlayer.setLooping(true); // To enable looping
 
-        audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // For Android Oreo (API 26) and above
+            focusRequest = new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
+                    .setAudioAttributes(new AudioAttributes.Builder()
+                            .setUsage(AudioAttributes.USAGE_GAME)
+                            .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                            .build())
+                    .setAcceptsDelayedFocusGain(true)
+                    .setOnAudioFocusChangeListener(this)
+                    .build();
+        }
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        // Start playback
         // Request audio focus
-        int result = audioManager.requestAudioFocus(
-                this, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
+        int result;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            result = audioManager.requestAudioFocus(focusRequest);
+        } else {
+            result = audioManager.requestAudioFocus(
+                    this, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
+        }
 
         if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-            // Start playback
-            mediaPlayer.start();
+            // Start playback if not already playing
+            if (!mediaPlayer.isPlaying()) {
+                mediaPlayer.start();
+            }
         }
         return START_STICKY;
     }
@@ -43,12 +64,19 @@ public class BgMusicService extends Service implements AudioManager.OnAudioFocus
     @Override
     public void onDestroy() {
         super.onDestroy();
-        // Release the MediaPlayer resources
-        mediaPlayer.stop();
-        mediaPlayer.release();
+        // Stop and release the MediaPlayer resources
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+        }
         // Abandon audio focus
-        audioManager.abandonAudioFocus(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            audioManager.abandonAudioFocusRequest(focusRequest);
+        } else {
+            audioManager.abandonAudioFocus(this);
+        }
     }
+
 
 
     @Nullable
@@ -58,9 +86,9 @@ public class BgMusicService extends Service implements AudioManager.OnAudioFocus
     }
 
     @Override
-    public void onAudioFocusChange(int i) {
+    public void onAudioFocusChange(int focusChange) {
         // Handle audio focus changes
-        switch (i) {
+        switch (focusChange) {
             case AudioManager.AUDIOFOCUS_LOSS:
                 // The service lost audio focus, stop playback
                 stopSelf();

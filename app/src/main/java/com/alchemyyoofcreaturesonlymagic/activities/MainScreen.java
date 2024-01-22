@@ -1,9 +1,12 @@
 package com.alchemyyoofcreaturesonlymagic.activities;
 
+import static com.alchemyyoofcreaturesonlymagic.services.BgMusicService.mediaPlayer;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,9 +26,22 @@ public class MainScreen extends AppCompatActivity {
     ActivityMainScreenBinding binding;
 
     @Override
+    protected void onStop() {
+        super.onStop();
+//        if(mediaPlayer!=null){
+//            if(mediaPlayer.isPlaying()){
+//                mediaPlayer.stop();
+//            }
+//        }
+    }
+
+
+    @Override
     protected void onResume() {
         super.onResume();
         loadLanguage();
+
+
     }
 
     @Override

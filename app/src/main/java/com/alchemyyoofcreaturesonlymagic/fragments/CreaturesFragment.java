@@ -247,6 +247,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
 
         } else if (firstCreature == 2 & secondCreature == 3) {
             if (Ref.creature23) {
+                Snackbar.make(binding.newCreature, "Creature already unlocked!", 1000).show();
 
             } else {
                 binding.resultLayout.setVisibility(View.VISIBLE);
@@ -265,6 +266,24 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
 
         } else if (firstCreature == 2 & secondCreature == 4) {
 
+        } else if (firstCreature == 3 & secondCreature ==2) {
+            if (Ref.creature32) {
+                Snackbar.make(binding.newCreature, "Creature already unlocked!", 1000).show();
+
+            } else {
+                binding.resultLayout.setVisibility(View.VISIBLE);
+                binding.newCreature.setVisibility(View.VISIBLE);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        binding.newCreature.setImageResource(R.drawable.creature_merge_by_32);
+                        Snackbar.make(binding.newCreature, "New creature unlocked!", 1000).show();
+                        Ref.creature32 = true;
+                        Ref.countOfUnlockCreatures++;
+                    }
+                }, 2000);
+            }
         }
 
     }

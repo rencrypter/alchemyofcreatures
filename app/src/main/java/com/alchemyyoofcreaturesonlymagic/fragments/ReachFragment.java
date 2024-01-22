@@ -66,5 +66,8 @@ public class ReachFragment extends Fragment {
         if (Ref.creature23) {
             binding.creature3.setImageResource(R.drawable.creature_merge_by_23);
         }
+        if (Ref.creature32) {
+            binding.creature4.setImageResource(R.drawable.creature_merge_by_32);
+        }
     }
 }

@@ -13,9 +13,13 @@
         android:theme="@style/Theme.AlchemyOfCreatures"
         tools:targetApi="31">
         <activity
+            android:name=".activities.AchievementsActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".activities.BookScreenActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activities.RulesScreen"
             android:exported="false"
@@ -42,7 +46,12 @@
         <service
             android:name=".services.BgMusicService"
             android:enabled="true"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="package_name.action_start_music" />
+                <action android:name="package_name.action_stop" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

@@ -41,6 +41,7 @@ public class BookScreenActivity extends AppCompatActivity {
 //        MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager());
         binding.myViewPager2.setPageTransformer(new DepthPageTransformer());
         binding.myViewPager2.setAdapter(pagerAdapter);
+        binding.myViewPager2.setUserInputEnabled(false);
 
         binding.creaturesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +74,5 @@ public class BookScreenActivity extends AppCompatActivity {
             SettingsScreen.changeLanguageApp("en", BookScreenActivity.this);
         }
     }
-
 
 }

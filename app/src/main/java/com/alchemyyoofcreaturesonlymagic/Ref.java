@@ -10,7 +10,11 @@ public class Ref {
     public static boolean creature12 = false;
     public static boolean creature14 = false;
     public static boolean creature23 = false;
+    public static boolean creature32 = false;
 
 
     public static boolean langR = false;
+
+    //
+    public static int countForDiary = 0;
 }
