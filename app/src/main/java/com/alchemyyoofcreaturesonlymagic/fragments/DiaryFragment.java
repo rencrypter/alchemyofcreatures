@@ -30,6 +30,11 @@ public class DiaryFragment extends Fragment {
     String[] diaryText1;
     String[] diaryText2;
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        dataUpdate();
+    }
 
     public DiaryFragment() {
         // Required empty public constructor
@@ -60,6 +65,28 @@ public class DiaryFragment extends Fragment {
         //
 
 
+            dataUpdate();
+        //
+
+        binding.nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (index == diaryText1.length) {
+                    index = 0;
+                    binding.txt1.setText(stringsList1.get(index));
+                    binding.txt2.setText(stringsList2.get(index));
+                } else {
+                    binding.txt1.setText(stringsList1.get(index));
+                    binding.txt2.setText(stringsList2.get(index));
+                    index = index + 1;
+                }
+
+            }
+        });
+    }
+
+    private void dataUpdate() {
         //
         if (!Ref.isUnlockCh2) {//btn gone
             binding.nextBtn.setVisibility(View.GONE);
@@ -102,23 +129,5 @@ public class DiaryFragment extends Fragment {
             stringsList2.add(getResources().getString(R.string.chapter10_2));
         }
 
-        //
-
-        binding.nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (index == diaryText1.length) {
-                    index = 0;
-                    binding.txt1.setText(stringsList1.get(index));
-                    binding.txt2.setText(stringsList2.get(index));
-                } else {
-                    binding.txt1.setText(stringsList1.get(index));
-                    binding.txt2.setText(stringsList2.get(index));
-                    index = index + 1;
-                }
-
-            }
-        });
     }
 }
