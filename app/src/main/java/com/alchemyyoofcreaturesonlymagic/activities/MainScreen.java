@@ -25,23 +25,11 @@ public class MainScreen extends AppCompatActivity {
 
     ActivityMainScreenBinding binding;
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-//        if(mediaPlayer!=null){
-//            if(mediaPlayer.isPlaying()){
-//                mediaPlayer.stop();
-//            }
-//        }
-    }
-
 
     @Override
     protected void onResume() {
         super.onResume();
         loadLanguage();
-
-
     }
 
     @Override
@@ -92,25 +80,19 @@ public class MainScreen extends AppCompatActivity {
 
         if (Ref.langR) {
             SettingsScreen.changeLanguageApp("ru", MainScreen.this);
-//            this.recreate();
-//            startActivity(getIntent());
 
         } else {
             SettingsScreen.changeLanguageApp("en", MainScreen.this);
-//            this.recreate();
-//            startActivity(getIntent());
-
         }
     }
 
     private void startBackgroundMusic() {
+        if (Ref.isMusicOff) {
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            Intent i = new Intent(this, BgMusicService.class);
-//            startForegroundService(i);
-//        } else {
-        Intent i = new Intent(this, BgMusicService.class);
-        startService(i);
-//        }
+        } else {
+            Intent i = new Intent(this, BgMusicService.class);
+            startService(i);
+        }
+
     }
 }

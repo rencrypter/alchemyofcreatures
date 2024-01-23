@@ -162,4 +162,11 @@
     <string name="chapter10_2">
         Мой ученик проявил себя как настоящий герой, и я горжусь им больше всего. Наше сотрудничество стало для меня не только источником помощи, но и вдохновения. Вместе мы смогли добиться невероятного. Эта история станет легендой.
     </string>
+    <string name="sound_is_already_on">Звук уже включен</string>
+    <string name="sound_is_off_now">Звук выключен</string>
+    <string name="sound_is_already_off">Звук уже выключен</string>
+    <string name="sound_is_on_now">Звук включен</string>
+    <string name="new_creature_unlocked">Новое существо разблокировано!</string>
+    <string name="creature_already_unlocked">Существо уже разблокировано!</string>
+
 </resources>

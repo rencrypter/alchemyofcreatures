@@ -156,5 +156,11 @@ Thus began our adventure. We faced many trials and dangers, but thanks to my stu
     <string name="chapter10_2">
         My student has shown himself as a true hero, and I am most proud of him. Our cooperation became not only a source of help, but also inspiration for me. Together, we were able to accomplish incredible things. This story will become a legend.
     </string>
+    <string name="sound_is_already_on">Sound is already on</string>
+    <string name="sound_is_off_now">Sound is off now</string>
+    <string name="sound_is_already_off">Sound is already off</string>
+    <string name="sound_is_on_now">Sound is on now</string>
+    <string name="new_creature_unlocked">New creature unlocked!</string>
+    <string name="creature_already_unlocked">Creature already unlocked!</string>
 
 </resources>

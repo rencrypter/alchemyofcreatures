@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<!--    <string-array name="diaryOne">-->
+<!--        <item>@string/chapter2_1</item>-->
+<!--        <item>@string/chapter3_1</item>-->
+<!--        <item>@string/chapter4_1</item>-->
+<!--        <item>@string/chapter5_1</item>-->
+<!--        <item>@string/chapter6_1</item>-->
+<!--        <item>@string/chapter7_1</item>-->
+<!--        <item>@string/chapter8_1</item>-->
+<!--        <item>@string/chapter9_1</item>-->
+<!--        <item>@string/chapter10_1</item>-->
+<!--    </string-array>-->
     <string-array name="diaryOne">
         <item>@string/chapter2_1</item>
-        <item>@string/chapter3_1</item>
-        <item>@string/chapter4_1</item>
-        <item>@string/chapter5_1</item>
-        <item>@string/chapter6_1</item>
-        <item>@string/chapter7_1</item>
-        <item>@string/chapter8_1</item>
-        <item>@string/chapter9_1</item>
-        <item>@string/chapter10_1</item>
     </string-array>
 
     <string-array name="diaryTwo">
         <item>@string/chapter2_2</item>
-        <item>@string/chapter3_2</item>
-        <item>@string/chapter4_2</item>
-        <item>@string/chapter5_2</item>
-        <item>@string/chapter6_2</item>
-        <item>@string/chapter7_2</item>
-        <item>@string/chapter8_2</item>
-        <item>@string/chapter9_2</item>
-        <item>@string/chapter10_2</item>
     </string-array>
+<!--    <string-array name="diaryTwo">-->
+<!--        <item>@string/chapter2_2</item>-->
+<!--        <item>@string/chapter3_2</item>-->
+<!--        <item>@string/chapter4_2</item>-->
+<!--        <item>@string/chapter5_2</item>-->
+<!--        <item>@string/chapter6_2</item>-->
+<!--        <item>@string/chapter7_2</item>-->
+<!--        <item>@string/chapter8_2</item>-->
+<!--        <item>@string/chapter9_2</item>-->
+<!--        <item>@string/chapter10_2</item>-->
+<!--    </string-array>-->
 
 </resources>

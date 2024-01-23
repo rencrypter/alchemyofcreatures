@@ -45,29 +45,28 @@ public class ReachFragment extends Fragment {
     public void onResume() {
         super.onResume();
         //
-        dataUpdate();
+
+        achievementsUnlock();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //
-        dataUpdate();
+
+        achievementsUnlock();
     }
 
-    private void dataUpdate() {
-
-        if (Ref.creature12) {
-            binding.creature1.setImageResource(R.drawable.creature_merge_by_12);
+    private void achievementsUnlock() {
+        if (Ref.countOfUnlockCreatures == 1) {
+            binding.achievement1.setImageResource(R.drawable.achie_sorcerer);
         }
-        if (Ref.creature14) {
-            binding.creature2.setImageResource(R.drawable.creature_merge_by_14);
+        if (Ref.countOfUnlockCreatures == 10) {
+            binding.achievement2.setImageResource(R.drawable.achie_new_master);
         }
-        if (Ref.creature23) {
-            binding.creature3.setImageResource(R.drawable.creature_merge_by_23);
-        }
-        if (Ref.creature32) {
-            binding.creature4.setImageResource(R.drawable.creature_merge_by_32);
+        if (Ref.countOfUnlockCreatures == 20) {
+            binding.achievement5.setImageResource(R.drawable.achie_dragon_master);
         }
     }
+
 }

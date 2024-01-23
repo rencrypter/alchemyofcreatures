@@ -78,16 +78,12 @@ public class SettingsScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (isMyServiceRunning(BgMusicService.class, SettingsScreen.this)) {
-                    Snackbar.make(view, "Sound is already on", 1000).show();
+                    Snackbar.make(view, R.string.sound_is_already_on, 1000).show();
                 } else {
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                        Intent i = new Intent(SettingsScreen.this, BgMusicService.class);
-//                        startForegroundService(i);
-//                    } else {
                     Intent i = new Intent(SettingsScreen.this, BgMusicService.class);
                     startService(i);
-//                    }
-                    Snackbar.make(view, "Sound is on now", 1000).show();
+                    Snackbar.make(view, R.string.sound_is_on_now, 1000).show();
+                    Ref.isMusicOff = false;//
                 }
             }
         });
@@ -97,9 +93,10 @@ public class SettingsScreen extends AppCompatActivity {
             public void onClick(View view) {
                 if (isMyServiceRunning(BgMusicService.class, SettingsScreen.this)) {
                     stopService(new Intent(SettingsScreen.this, BgMusicService.class));
-                    Snackbar.make(view, "Sound is off now", 1000).show();
+                    Snackbar.make(view, R.string.sound_is_off_now, 1000).show();
+                    Ref.isMusicOff = true;//ref bool for not turning the sound when the mainscreen is recreated
                 } else {
-                    Snackbar.make(view, "Sound is already off", 1000).show();
+                    Snackbar.make(view, R.string.sound_is_already_off, 1000).show();
                 }
             }
         });
