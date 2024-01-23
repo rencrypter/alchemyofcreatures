@@ -35,6 +35,11 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
     boolean monster2 = false;
     boolean monster3 = false;
     boolean monster4 = false;
+    //
+    boolean monster5 = false;
+    boolean monster6 = false;
+    boolean monster7 = false;
+    boolean monster8 = false;
 
     private List<Integer> clickedCreatures = new ArrayList<>();
 
@@ -44,6 +49,11 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
     int two = 0;
     int three = 0;
     int four = 0;
+    //
+    int five = 0;
+    int six = 0;
+    int seven = 0;
+    int eight = 0;
 
     public CreaturesFragment() {
         // Required empty public constructor
@@ -73,6 +83,11 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
         binding.monster2.setOnClickListener(this);
         binding.monster3.setOnClickListener(this);
         binding.monster4.setOnClickListener(this);
+        //frame2
+        binding.monster5.setOnClickListener(this);
+        binding.monster6.setOnClickListener(this);
+        binding.monster7.setOnClickListener(this);
+        binding.monster8.setOnClickListener(this);
 
         binding.closedResult.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,11 +101,43 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                     public void run() {
                         achievementsUnlock();
                     }
-                }, 1000);
+                }, 800);
 
             }
         });
 
+        //next frames and previous logic
+        binding.next1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.frame1.setVisibility(View.GONE);
+                binding.frame2.setVisibility(View.VISIBLE);
+
+            }
+        });
+        binding.next2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.frame2.setVisibility(View.GONE);
+                binding.frame3.setVisibility(View.VISIBLE);
+
+            }
+        });
+        //
+        binding.previousToF1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.frame2.setVisibility(View.GONE);
+                binding.frame1.setVisibility(View.VISIBLE);
+            }
+        });
+        binding.previousToF2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.frame3.setVisibility(View.GONE);
+                binding.frame2.setVisibility(View.VISIBLE);
+            }
+        });
         binding.achievementImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -169,6 +216,62 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
             } else {
                 clickCounter++;
                 clickedCreatures.add(4);
+                onImageViewClick();
+            }
+            //frame_2
+        } else if (view.getId() == binding.monster5.getId()) {
+
+            monster5 = true;
+            five++;
+            if (five == 2) {
+                monster5 = false;
+                Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
+                clickCounter = 0;
+                five = 0;
+            } else {
+                clickCounter++;
+                clickedCreatures.add(5);
+                onImageViewClick();
+            }
+        } else if (view.getId() == binding.monster6.getId()) {
+
+            monster6 = true;
+            six++;
+            if (six == 2) {
+                monster6 = false;
+                Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
+                clickCounter = 0;
+                six = 0;
+            } else {
+                clickCounter++;
+                clickedCreatures.add(6);
+                onImageViewClick();
+            }
+        } else if (view.getId() == binding.monster7.getId()) {
+
+            monster7 = true;
+            seven++;
+            if (seven == 2) {
+                monster7 = false;
+                Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
+                clickCounter = 0;
+                seven = 0;
+            } else {
+                clickCounter++;
+                clickedCreatures.add(7);
+                onImageViewClick();
+            }
+        } else if (view.getId() == binding.monster8.getId()) {
+            monster8 = true;
+            eight++;
+            if (eight == 2) {
+                monster8 = false;
+                Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
+                clickCounter = 0;
+                eight = 0;
+            } else {
+                clickCounter++;
+                clickedCreatures.add(8);
                 onImageViewClick();
             }
         }
@@ -266,7 +369,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
 
         } else if (firstCreature == 2 & secondCreature == 4) {
 
-        } else if (firstCreature == 3 & secondCreature ==2) {
+        } else if (firstCreature == 3 & secondCreature == 2) {
             if (Ref.creature32) {
                 Snackbar.make(binding.newCreature, "Creature already unlocked!", 1000).show();
 
