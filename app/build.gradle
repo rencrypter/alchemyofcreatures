@@ -55,6 +55,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime:2.7.0'
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.7.0'
 
+    //lottie
+    implementation "com.airbnb.android:lottie:6.3.0"
     //
 //    implementation 'com.wajahatkarim:easyflipviewpager:2.0.1'
 }

@@ -12,6 +12,8 @@ public class Ref {
     public static boolean creature23 = false;
     public static boolean creature32 = false;
     //
+    public static boolean creature37 = false;
+    //
     public static boolean creature27 = false;
     public static boolean creature67 = false;
     public static boolean creature311 = false;

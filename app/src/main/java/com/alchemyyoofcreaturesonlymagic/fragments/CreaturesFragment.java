@@ -75,7 +75,6 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
     }
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
 //        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -122,7 +121,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                     public void run() {
                         achievementsUnlock();
                     }
-                }, 800);
+                }, 400);
 
             }
         });
@@ -190,15 +189,44 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
             binding.achievementImg.setImageResource(R.drawable.achie_sorcerer);
             Ref.isUnlockCh2 = true;
         }
-        if (Ref.countOfUnlockCreatures == 10) {
+        if (Ref.countOfUnlockCreatures == 5) { //khud se
             binding.achievementLayout.setVisibility(View.VISIBLE);
             binding.achievementImg.setImageResource(R.drawable.achie_new_master);
             Ref.isUnlockCh3 = true;
         }
-        if (Ref.countOfUnlockCreatures == 20) {
+        if (Ref.countOfUnlockCreatures == 10) {
+            binding.achievementLayout.setVisibility(View.VISIBLE);
+            binding.achievementImg.setImageResource(R.drawable.achie_tammer_of_evil);
+            Ref.isUnlockCh4 = true;
+        }
+
+        if (Ref.countOfUnlockCreatures == 11) {
+            binding.achievementLayout.setVisibility(View.VISIBLE);
+            binding.achievementImg.setImageResource(R.drawable.achie_onthe_right_track);
+            Ref.isUnlockCh5 = true;
+        }
+//missing
+//        if(Ref.countOfUnlockCreatures == 12){
+//            binding.achievementLayout.setVisibility(View.VISIBLE);
+//            binding.achievementImg.setImageResource(R.drawable.achie_);
+//            Ref.isUnlockCh6 = true;
+//        }
+        if (Ref.countOfUnlockCreatures == 18) { //khud se
             binding.achievementLayout.setVisibility(View.VISIBLE);
             binding.achievementImg.setImageResource(R.drawable.achie_dragon_master);
             Ref.isUnlockCh6 = true;
+        }
+
+        if (Ref.countOfUnlockCreatures == 19) {
+            binding.achievementLayout.setVisibility(View.VISIBLE);
+            binding.achievementImg.setImageResource(R.drawable.achie_last_hero);
+            Ref.isUnlockCh7 = true;
+        }
+
+        if (Ref.countOfUnlockCreatures == 20) {
+            binding.achievementLayout.setVisibility(View.VISIBLE);
+            binding.achievementImg.setImageResource(R.drawable.achie_grand_master);
+            Ref.isUnlockCh8 = true;
         }
     }
 
@@ -213,9 +241,11 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
                 one = 0;
                 clickCounter = 0;
+                drawableUnselected();
             } else {
                 clickCounter++; //this one for two clicks on creatures //click counter
                 clickedCreatures.add(1);
+                binding.monster1.setImageResource(R.drawable.ic_monster1_shadow);
                 onImageViewClick();
             }
 
@@ -227,9 +257,11 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
                 two = 0;
                 clickCounter = 0;
+                drawableUnselected();
             } else {
                 clickCounter++;
                 clickedCreatures.add(2);
+                binding.monster2.setImageResource(R.drawable.ic_monster2_shadow);
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster3.getId()) {
@@ -240,9 +272,11 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
                 clickCounter = 0;
                 three = 0;
+                drawableUnselected();
             } else {
                 clickCounter++;
                 clickedCreatures.add(3);
+                binding.monster3.setImageResource(R.drawable.ic_monster3_shadow);
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster4.getId()) {
@@ -253,9 +287,11 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
                 clickCounter = 0;
                 four = 0;
+                drawableUnselected();
             } else {
                 clickCounter++;
                 clickedCreatures.add(4);
+                binding.monster4.setImageResource(R.drawable.ic_monster4_shadow);
                 onImageViewClick();
             }
             //frame_2
@@ -268,9 +304,11 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
                 clickCounter = 0;
                 five = 0;
+                drawableUnselected();
             } else {
                 clickCounter++;
                 clickedCreatures.add(5);
+                binding.monster5.setImageResource(R.drawable.ic_monster5_shadow);
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster6.getId()) {
@@ -282,9 +320,12 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
                 clickCounter = 0;
                 six = 0;
+                drawableUnselected();
             } else {
                 clickCounter++;
                 clickedCreatures.add(6);
+                binding.monster6.setImageResource(R.drawable.ic_monster6_shadow);
+
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster7.getId()) {
@@ -296,9 +337,11 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
                 clickCounter = 0;
                 seven = 0;
+                drawableUnselected();
             } else {
                 clickCounter++;
                 clickedCreatures.add(7);
+                binding.monster7.setImageResource(R.drawable.ic_monster7_shadow);
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster8.getId()) {
@@ -309,9 +352,11 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
                 clickCounter = 0;
                 eight = 0;
+                drawableUnselected();
             } else {
                 clickCounter++;
                 clickedCreatures.add(8);
+                binding.monster8.setImageResource(R.drawable.ic_monster8_shadow);
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster9.getId()) {
@@ -322,9 +367,11 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
                 clickCounter = 0;
                 nine = 0;
+                drawableUnselected();
             } else {
                 clickCounter++;
                 clickedCreatures.add(9);
+                binding.monster9.setImageResource(R.drawable.ic_monster9_shadow);
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster10.getId()) {
@@ -335,9 +382,11 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
                 clickCounter = 0;
                 ten = 0;
+                drawableUnselected();
             } else {
                 clickCounter++;
                 clickedCreatures.add(10);
+                binding.monster10.setImageResource(R.drawable.ic_monster10_shadow);
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster11.getId()) {
@@ -348,9 +397,11 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 Snackbar.make(binding.monster1, "You already selected this creature, Select different creatures!", 1000).show();
                 clickCounter = 0;
                 eleven = 0;
+                drawableUnselected();
             } else {
                 clickCounter++;
                 clickedCreatures.add(11);
+                binding.monster11.setImageResource(R.drawable.ic_monster11_shadow);
                 onImageViewClick();
             }
         }
@@ -393,7 +444,25 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
             monster11 = false;
             //
             clickedCreatures.clear();
+
+            //drawable selection remove
+            drawableUnselected();
         }
+
+    }
+
+    private void drawableUnselected() {
+        binding.monster1.setImageResource(R.drawable.ic_monster1);
+        binding.monster2.setImageResource(R.drawable.ic_monster2);
+        binding.monster3.setImageResource(R.drawable.ic_monster3);
+        binding.monster4.setImageResource(R.drawable.ic_monster4);
+        binding.monster5.setImageResource(R.drawable.ic_monster5);
+        binding.monster6.setImageResource(R.drawable.ic_monster6);
+        binding.monster7.setImageResource(R.drawable.ic_monster7);
+        binding.monster8.setImageResource(R.drawable.ic_monster8);
+        binding.monster9.setImageResource(R.drawable.ic_monster9);
+        binding.monster10.setImageResource(R.drawable.ic_monster10);
+        binding.monster11.setImageResource(R.drawable.ic_monster11);
 
     }
 
@@ -401,8 +470,28 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
 
         int firstCreature = clickedCreatures.get(0);
         int secondCreature = clickedCreatures.get(1);
+        //
+        if (firstCreature == 3 && secondCreature == 7) { //new add
 
-        if (firstCreature == 1 && secondCreature == 2) {
+            //if it trues then it already unlocked
+            if (Ref.creature37) {
+                Snackbar.make(binding.newCreature, R.string.creature_already_unlocked, 1000).show();
+            } else {
+                binding.resultLayout.setVisibility(View.VISIBLE);
+                binding.newCreature.setVisibility(View.VISIBLE);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        binding.newCreature.setImageResource(R.drawable.creature_merge_by_37);
+                        Snackbar.make(binding.newCreature, R.string.new_creature_unlocked, 1000).show();
+                        Ref.creature37 = true;
+                        Ref.countOfUnlockCreatures++;
+                    }
+                }, 2000);
+            }
+
+        }else if (firstCreature == 1 && secondCreature == 2) {
 
             //if it trues then it already unlocked
             if (Ref.creature12) {
@@ -814,6 +903,10 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
         }
         if (Ref.creature32) {
             binding.creature20.setImageResource(R.drawable.creature_merge_by_32);
+        }
+        if(Ref.creature37){
+            binding.creature21.setImageResource(R.drawable.creature_merge_by_37);
+
         }
     }
 }

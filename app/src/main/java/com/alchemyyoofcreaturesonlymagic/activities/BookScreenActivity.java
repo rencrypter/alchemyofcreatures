@@ -64,6 +64,14 @@ public class BookScreenActivity extends AppCompatActivity {
             }
         });
 
+        //
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
     }
 
     private void loadLanguage() {

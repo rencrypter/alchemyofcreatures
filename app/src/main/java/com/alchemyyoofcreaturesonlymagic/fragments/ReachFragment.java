@@ -58,14 +58,46 @@ public class ReachFragment extends Fragment {
     }
 
     private void achievementsUnlock() {
-        if (Ref.countOfUnlockCreatures == 1) {
+//        if (Ref.isUnlockCh2) {
+//            binding.achievement1.setImageResource(R.drawable.achie_sorcerer);
+//        }
+//        if (Ref.isUnlockCh3) {
+//            binding.achievement2.setImageResource(R.drawable.achie_new_master);
+//        }
+//        if (Ref.isUnlockCh4) {
+//            binding.achievement5.setImageResource(R.drawable.achie_dragon_master);
+//        }
+
+        //
+        if (Ref.isUnlockCh2) {
             binding.achievement1.setImageResource(R.drawable.achie_sorcerer);
         }
-        if (Ref.countOfUnlockCreatures == 10) {
+        if (Ref.isUnlockCh3) { //khud se
             binding.achievement2.setImageResource(R.drawable.achie_new_master);
         }
-        if (Ref.countOfUnlockCreatures == 20) {
-            binding.achievement5.setImageResource(R.drawable.achie_dragon_master);
+        if (Ref.isUnlockCh4) {
+            binding.achievement3.setImageResource(R.drawable.achie_tammer_of_evil);
+        }
+
+        if (Ref.isUnlockCh5) {
+            binding.achievement4.setImageResource(R.drawable.achie_onthe_right_track);
+        }
+//missing
+//        if(Ref.countOfUnlockCreatures == 12){
+//            binding.achievementLayout.setVisibility(View.VISIBLE);
+//            binding.achievementImg.setImageResource(R.drawable.achie_);
+//            Ref.isUnlockCh6 = true;
+//        }
+        if (Ref.isUnlockCh6) { //khud se
+            binding.achievement6.setImageResource(R.drawable.achie_dragon_master);
+        }
+
+        if (Ref.isUnlockCh7) {
+            binding.achievement7.setImageResource(R.drawable.achie_last_hero);
+        }
+
+        if (Ref.isUnlockCh8) {
+            binding.achievement8.setImageResource(R.drawable.achie_grand_master);
         }
     }
 
