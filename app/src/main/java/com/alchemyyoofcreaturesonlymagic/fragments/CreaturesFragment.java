@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.alchemyyoofcreaturesonlymagic.R;
 import com.alchemyyoofcreaturesonlymagic.Ref;
+import com.alchemyyoofcreaturesonlymagic.Sounds;
 import com.alchemyyoofcreaturesonlymagic.databinding.FragmentCreaturesBinding;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -115,6 +116,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 binding.newCreature.setImageDrawable(null);
                 binding.resultLayout.setVisibility(View.GONE);
                 //
+                Sounds.playButtonClickSound(getActivity());
                 //achievements onLock//
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -130,6 +132,8 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
         binding.next1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(getActivity());
+
                 binding.frame1.setVisibility(View.GONE);
                 binding.frame2.setVisibility(View.VISIBLE);
 
@@ -138,6 +142,8 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
         binding.next2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(getActivity());
+
                 binding.frame2.setVisibility(View.GONE);
                 binding.frame3.setVisibility(View.VISIBLE);
 
@@ -146,6 +152,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
         binding.next3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(getActivity());
                 binding.frame3.setVisibility(View.GONE);
                 dataUpdate();
                 binding.resultFrame.setVisibility(View.VISIBLE);
@@ -155,6 +162,8 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
         binding.previousToF1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(getActivity());
+
                 binding.frame2.setVisibility(View.GONE);
                 binding.frame1.setVisibility(View.VISIBLE);
             }
@@ -162,6 +171,8 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
         binding.previousToF2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(getActivity());
+
                 binding.frame3.setVisibility(View.GONE);
                 binding.frame2.setVisibility(View.VISIBLE);
             }
@@ -170,6 +181,8 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
         binding.previousToF3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(getActivity());
+
                 binding.resultFrame.setVisibility(View.GONE);
                 binding.frame3.setVisibility(View.VISIBLE);
             }
@@ -177,6 +190,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
         binding.achievementImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(getActivity());
                 binding.achievementLayout.setVisibility(View.GONE);
             }
         });
@@ -185,22 +199,26 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
 
     private void achievementsUnlock() {
         if (Ref.countOfUnlockCreatures == 1) {
+            Sounds.playAchievementUnlockSound(getActivity());
             binding.achievementLayout.setVisibility(View.VISIBLE);
             binding.achievementImg.setImageResource(R.drawable.achie_sorcerer);
             Ref.isUnlockCh2 = true;
         }
         if (Ref.countOfUnlockCreatures == 5) { //khud se
+            Sounds.playAchievementUnlockSound(getActivity());
             binding.achievementLayout.setVisibility(View.VISIBLE);
             binding.achievementImg.setImageResource(R.drawable.achie_new_master);
             Ref.isUnlockCh3 = true;
         }
         if (Ref.countOfUnlockCreatures == 10) {
+            Sounds.playAchievementUnlockSound(getActivity());
             binding.achievementLayout.setVisibility(View.VISIBLE);
             binding.achievementImg.setImageResource(R.drawable.achie_tammer_of_evil);
             Ref.isUnlockCh4 = true;
         }
 
         if (Ref.countOfUnlockCreatures == 11) {
+            Sounds.playAchievementUnlockSound(getActivity());
             binding.achievementLayout.setVisibility(View.VISIBLE);
             binding.achievementImg.setImageResource(R.drawable.achie_onthe_right_track);
             Ref.isUnlockCh5 = true;
@@ -212,21 +230,26 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
 //            Ref.isUnlockCh6 = true;
 //        }
         if (Ref.countOfUnlockCreatures == 18) { //khud se
+            Sounds.playAchievementUnlockSound(getActivity());
             binding.achievementLayout.setVisibility(View.VISIBLE);
             binding.achievementImg.setImageResource(R.drawable.achie_dragon_master);
             Ref.isUnlockCh6 = true;
         }
 
         if (Ref.countOfUnlockCreatures == 19) {
+            Sounds.playAchievementUnlockSound(getActivity());
             binding.achievementLayout.setVisibility(View.VISIBLE);
             binding.achievementImg.setImageResource(R.drawable.achie_last_hero);
             Ref.isUnlockCh7 = true;
         }
 
         if (Ref.countOfUnlockCreatures == 20) {
+            Sounds.playAchievementUnlockSound(getActivity());
             binding.achievementLayout.setVisibility(View.VISIBLE);
             binding.achievementImg.setImageResource(R.drawable.achie_grand_master);
             Ref.isUnlockCh8 = true;
+            Ref.isUnlockCh9 = true;
+            Ref.isUnlockCh10 = true;
         }
     }
 
@@ -234,6 +257,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
     public void onClick(View view) {
 
         if (view.getId() == binding.monster1.getId()) {
+            Sounds.playDragonClickSound(getActivity());
             one++;
             monster1 = true;
             if (one == 2) {
@@ -250,6 +274,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
             }
 
         } else if (view.getId() == binding.monster2.getId()) {
+            Sounds.playMonsterClickSound(getActivity());
             monster2 = true;
             two++;
             if (two == 2) {
@@ -265,6 +290,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster3.getId()) {
+            Sounds.playMonsterClickSound(getActivity());
             monster3 = true;
             three++;
             if (three == 2) {
@@ -280,6 +306,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster4.getId()) {
+            Sounds.playDragonClickSound(getActivity());
             monster4 = true;
             four++;
             if (four == 2) {
@@ -296,7 +323,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
             }
             //frame_2
         } else if (view.getId() == binding.monster5.getId()) {
-
+            Sounds.playDragonClickSound(getActivity());
             monster5 = true;
             five++;
             if (five == 2) {
@@ -312,7 +339,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster6.getId()) {
-
+            Sounds.playMonsterClickSound(getActivity());
             monster6 = true;
             six++;
             if (six == 2) {
@@ -329,7 +356,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster7.getId()) {
-
+            Sounds.playMonsterClickSound(getActivity());
             monster7 = true;
             seven++;
             if (seven == 2) {
@@ -345,6 +372,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster8.getId()) {
+            Sounds.playDragonClickSound(getActivity());
             monster8 = true;
             eight++;
             if (eight == 2) {
@@ -360,6 +388,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster9.getId()) {
+            Sounds.playDragonClickSound(getActivity());
             monster9 = true;
             nine++;
             if (nine == 2) {
@@ -375,6 +404,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster10.getId()) {
+            Sounds.playMonsterClickSound(getActivity());
             monster10 = true;
             ten++;
             if (ten == 2) {
@@ -390,6 +420,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 onImageViewClick();
             }
         } else if (view.getId() == binding.monster11.getId()) {
+            Sounds.playMonsterClickSound(getActivity());
             monster11 = true;
             eleven++;
             if (eleven == 2) {
@@ -491,7 +522,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
                 }, 2000);
             }
 
-        }else if (firstCreature == 1 && secondCreature == 2) {
+        } else if (firstCreature == 1 && secondCreature == 2) {
 
             //if it trues then it already unlocked
             if (Ref.creature12) {
@@ -904,7 +935,7 @@ public class CreaturesFragment extends Fragment implements View.OnClickListener 
         if (Ref.creature32) {
             binding.creature20.setImageResource(R.drawable.creature_merge_by_32);
         }
-        if(Ref.creature37){
+        if (Ref.creature37) {
             binding.creature21.setImageResource(R.drawable.creature_merge_by_37);
 
         }

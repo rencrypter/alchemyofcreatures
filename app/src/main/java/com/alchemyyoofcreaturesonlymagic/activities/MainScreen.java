@@ -16,6 +16,7 @@ import android.view.WindowManager;
 
 import com.alchemyyoofcreaturesonlymagic.R;
 import com.alchemyyoofcreaturesonlymagic.Ref;
+import com.alchemyyoofcreaturesonlymagic.Sounds;
 import com.alchemyyoofcreaturesonlymagic.databinding.ActivityMainScreenBinding;
 import com.alchemyyoofcreaturesonlymagic.services.BgMusicService;
 
@@ -53,6 +54,7 @@ public class MainScreen extends AppCompatActivity {
         binding.settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(MainScreen.this);
                 startActivity(new Intent(MainScreen.this, SettingsScreen.class));
                 finish();
             }
@@ -62,6 +64,7 @@ public class MainScreen extends AppCompatActivity {
         binding.rulesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(MainScreen.this);
                 startActivity(new Intent(MainScreen.this, RulesScreen.class));
             }
         });
@@ -70,6 +73,7 @@ public class MainScreen extends AppCompatActivity {
         binding.playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(MainScreen.this);
                 startActivity(new Intent(MainScreen.this, BookScreenActivity.class));
             }
         });

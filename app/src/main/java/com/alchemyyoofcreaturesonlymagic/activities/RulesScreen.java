@@ -10,6 +10,7 @@ import android.view.WindowManager;
 
 import com.alchemyyoofcreaturesonlymagic.R;
 import com.alchemyyoofcreaturesonlymagic.Ref;
+import com.alchemyyoofcreaturesonlymagic.Sounds;
 import com.alchemyyoofcreaturesonlymagic.databinding.ActivityRulesScreenBinding;
 import com.alchemyyoofcreaturesonlymagic.services.BgMusicService;
 
@@ -33,6 +34,7 @@ public class RulesScreen extends AppCompatActivity {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(RulesScreen.this);
                 finish();
             }
         });

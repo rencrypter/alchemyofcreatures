@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.alchemyyoofcreaturesonlymagic.R;
 import com.alchemyyoofcreaturesonlymagic.Ref;
+import com.alchemyyoofcreaturesonlymagic.Sounds;
 import com.alchemyyoofcreaturesonlymagic.databinding.ActivitySettingsScreenBinding;
 import com.alchemyyoofcreaturesonlymagic.services.BgMusicService;
 import com.google.android.material.snackbar.Snackbar;
@@ -50,6 +51,7 @@ public class SettingsScreen extends AppCompatActivity {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(SettingsScreen.this);
                 startActivity(new Intent(SettingsScreen.this, MainScreen.class));
                 finish();
             }
@@ -59,6 +61,7 @@ public class SettingsScreen extends AppCompatActivity {
         binding.engLangBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(SettingsScreen.this);
                 Ref.langR = false;
                 changeLanguageApp("en", SettingsScreen.this);
                 finish();
@@ -68,6 +71,7 @@ public class SettingsScreen extends AppCompatActivity {
         binding.russiaLangBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(SettingsScreen.this);
                 Ref.langR = true;
                 changeLanguageApp("ru", SettingsScreen.this);
                 finish();
@@ -78,6 +82,7 @@ public class SettingsScreen extends AppCompatActivity {
         binding.onSoundBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(SettingsScreen.this);
                 if (isMyServiceRunning(BgMusicService.class, SettingsScreen.this)) {
                     Snackbar.make(view, R.string.sound_is_already_on, 1000).show();
                 } else {
@@ -92,6 +97,7 @@ public class SettingsScreen extends AppCompatActivity {
         binding.offSoundBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Sounds.playButtonClickSound(SettingsScreen.this);
                 if (isMyServiceRunning(BgMusicService.class, SettingsScreen.this)) {
                     stopService(new Intent(SettingsScreen.this, BgMusicService.class));
                     Snackbar.make(view, R.string.sound_is_off_now, 1000).show();

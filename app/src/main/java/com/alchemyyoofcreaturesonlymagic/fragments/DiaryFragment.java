@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.alchemyyoofcreaturesonlymagic.R;
 import com.alchemyyoofcreaturesonlymagic.Ref;
+import com.alchemyyoofcreaturesonlymagic.Sounds;
 import com.alchemyyoofcreaturesonlymagic.databinding.FragmentDiaryBinding;
 
 import java.util.ArrayList;
@@ -72,6 +73,7 @@ public class DiaryFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                Sounds.playDiaryBtnSound(getActivity());
                 if (index == diaryText1.length) {
                     index = 0;
                     binding.txt1.setText(stringsList1.get(index));
